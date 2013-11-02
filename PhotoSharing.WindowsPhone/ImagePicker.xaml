@@ -28,7 +28,7 @@
         </StackPanel>
 
         <!--ContentPanel. Colocar aquí el contenido adicional-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <Grid x:Name="ContentPanel" Grid.Row="1">
             <Image x:Name="selectedImage"/>
         </Grid>
     </Grid>
@@ -39,6 +39,10 @@
                                             IsEnabled="True" 
                                             Text="share" 
                                             Click="ApplicationBarIconButton_Click"/>
+            <shell:ApplicationBarIconButton IconUri="Assets/AppBar/minus.png" 
+                                            IsEnabled="True" 
+                                            Text="toggle" 
+                                            Click="ApplicationBarIconButton_Click_1"/>
 
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

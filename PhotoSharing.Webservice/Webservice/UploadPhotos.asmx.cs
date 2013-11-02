@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Services;
 using PhotoSharing.Webservice.Services;
+using Microsoft.AspNet.SignalR;
+using PhotoSharing.Webservice.SignalR;
 
 namespace PhotoSharing.Webservice.Webservice
 {
@@ -30,6 +32,15 @@ namespace PhotoSharing.Webservice.Webservice
             string basePath = Server.MapPath("~/");
             // Se sube la imagen
             return PhotoServices.UploadImage(imageBase64, basePath, qrCode);
+        }
+
+        [WebMethod]
+        public bool Toggle()
+        {
+            // aquí directamente mandamos un broadcast
+            var hub = GlobalHost.ConnectionManager.GetHubContext<PhotoHub>();
+            hub.Clients.All.toggleImage();
+            return true;
         }
     }
 }

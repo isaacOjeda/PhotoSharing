@@ -22,6 +22,11 @@ namespace PhotoSharing.WindowsPhone.UploadService {
         System.IAsyncResult BeginUpload(PhotoSharing.WindowsPhone.UploadService.UploadRequest request, System.AsyncCallback callback, object asyncState);
         
         PhotoSharing.WindowsPhone.UploadService.UploadResponse EndUpload(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/Toggle", ReplyAction="*")]
+        System.IAsyncResult BeginToggle(System.AsyncCallback callback, object asyncState);
+        
+        bool EndToggle(System.IAsyncResult result);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -121,6 +126,25 @@ namespace PhotoSharing.WindowsPhone.UploadService {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ToggleCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ToggleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class UploadPhotosSoapClient : System.ServiceModel.ClientBase<PhotoSharing.WindowsPhone.UploadService.UploadPhotosSoap>, PhotoSharing.WindowsPhone.UploadService.UploadPhotosSoap {
         
         private BeginOperationDelegate onBeginUploadDelegate;
@@ -128,6 +152,12 @@ namespace PhotoSharing.WindowsPhone.UploadService {
         private EndOperationDelegate onEndUploadDelegate;
         
         private System.Threading.SendOrPostCallback onUploadCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginToggleDelegate;
+        
+        private EndOperationDelegate onEndToggleDelegate;
+        
+        private System.Threading.SendOrPostCallback onToggleCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -183,6 +213,8 @@ namespace PhotoSharing.WindowsPhone.UploadService {
         }
         
         public event System.EventHandler<UploadCompletedEventArgs> UploadCompleted;
+        
+        public event System.EventHandler<ToggleCompletedEventArgs> ToggleCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -249,6 +281,50 @@ namespace PhotoSharing.WindowsPhone.UploadService {
             base.InvokeAsync(this.onBeginUploadDelegate, new object[] {
                         imageBase64,
                         qrCode}, this.onEndUploadDelegate, this.onUploadCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult PhotoSharing.WindowsPhone.UploadService.UploadPhotosSoap.BeginToggle(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginToggle(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool PhotoSharing.WindowsPhone.UploadService.UploadPhotosSoap.EndToggle(System.IAsyncResult result) {
+            return base.Channel.EndToggle(result);
+        }
+        
+        private System.IAsyncResult OnBeginToggle(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return ((PhotoSharing.WindowsPhone.UploadService.UploadPhotosSoap)(this)).BeginToggle(callback, asyncState);
+        }
+        
+        private object[] OnEndToggle(System.IAsyncResult result) {
+            bool retVal = ((PhotoSharing.WindowsPhone.UploadService.UploadPhotosSoap)(this)).EndToggle(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnToggleCompleted(object state) {
+            if ((this.ToggleCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ToggleCompleted(this, new ToggleCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ToggleAsync() {
+            this.ToggleAsync(null);
+        }
+        
+        public void ToggleAsync(object userState) {
+            if ((this.onBeginToggleDelegate == null)) {
+                this.onBeginToggleDelegate = new BeginOperationDelegate(this.OnBeginToggle);
+            }
+            if ((this.onEndToggleDelegate == null)) {
+                this.onEndToggleDelegate = new EndOperationDelegate(this.OnEndToggle);
+            }
+            if ((this.onToggleCompletedDelegate == null)) {
+                this.onToggleCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnToggleCompleted);
+            }
+            base.InvokeAsync(this.onBeginToggleDelegate, null, this.onEndToggleDelegate, this.onToggleCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -337,6 +413,18 @@ namespace PhotoSharing.WindowsPhone.UploadService {
             public PhotoSharing.WindowsPhone.UploadService.UploadResponse EndUpload(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 PhotoSharing.WindowsPhone.UploadService.UploadResponse _result = ((PhotoSharing.WindowsPhone.UploadService.UploadResponse)(base.EndInvoke("Upload", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginToggle(System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[0];
+                System.IAsyncResult _result = base.BeginInvoke("Toggle", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndToggle(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("Toggle", _args, result)));
                 return _result;
             }
         }

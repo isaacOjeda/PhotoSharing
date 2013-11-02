@@ -17,7 +17,15 @@
             var photoHub = $.connection.photoHub;
 
             photoHub.client.onImageUploaded = function (url) {
-                $("#qrCode").html("<img src='" + url + "' />");
+                $qrCode = $("#qrCode");
+                $qrCode.slideUp("fast")
+                    .html("<img src='" + url + "' />")
+                    .delay("1000")
+                    .slideDown("fast");
+            }
+
+            photoHub.client.toggleImage = function () {
+                $("#qrCode").slideToggle("slow");
             }
 
             $.connection.hub.start().done(function () {

@@ -138,6 +138,9 @@
     </None>
     <None Include="Service References\UploadService\UploadPhotos.wsdl" />
     <Content Include="Assets\AppBar\feature.camera.png" />
+    <Content Include="Assets\AppBar\minus.png" />
+    <Content Include="Assets\AppBar\new.png" />
+    <Content Include="Assets\AppBar\sync.png" />
     <Content Include="ServiceReferences.ClientConfig" />
   </ItemGroup>
   <ItemGroup>

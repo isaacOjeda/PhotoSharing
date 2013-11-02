@@ -17,6 +17,16 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Toggle">
+        <s:complexType />
+      </s:element>
+      <s:element name="ToggleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ToggleResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="UploadSoapIn">
@@ -25,10 +35,20 @@
   <wsdl:message name="UploadSoapOut">
     <wsdl:part name="parameters" element="tns:UploadResponse" />
   </wsdl:message>
+  <wsdl:message name="ToggleSoapIn">
+    <wsdl:part name="parameters" element="tns:Toggle" />
+  </wsdl:message>
+  <wsdl:message name="ToggleSoapOut">
+    <wsdl:part name="parameters" element="tns:ToggleResponse" />
+  </wsdl:message>
   <wsdl:portType name="UploadPhotosSoap">
     <wsdl:operation name="Upload">
       <wsdl:input message="tns:UploadSoapIn" />
       <wsdl:output message="tns:UploadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Toggle">
+      <wsdl:input message="tns:ToggleSoapIn" />
+      <wsdl:output message="tns:ToggleSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="UploadPhotosSoap" type="tns:UploadPhotosSoap">
@@ -42,11 +62,29 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Toggle">
+      <soap:operation soapAction="http://tempuri.org/Toggle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="UploadPhotosSoap12" type="tns:UploadPhotosSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="Upload">
       <soap12:operation soapAction="http://tempuri.org/Upload" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Toggle">
+      <soap12:operation soapAction="http://tempuri.org/Toggle" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

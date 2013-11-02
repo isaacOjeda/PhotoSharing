@@ -25,6 +25,14 @@ namespace PhotoSharing.WindowsPhone
         /// </summary>
         public string QrId { get; set; }
         /// <summary>
+        /// 
+        /// </summary>
+        private ApplicationBarIconButton toggleButton;
+        /// <summary>
+        /// 
+        /// </summary>
+        private bool flag;
+        /// <summary>
         /// Init del Task
         /// </summary>
         public ImagePicker()
@@ -34,6 +42,10 @@ namespace PhotoSharing.WindowsPhone
             photoChooserTask = new PhotoChooserTask();
             photoChooserTask.ShowCamera = true;
             photoChooserTask.Completed += new EventHandler<PhotoResult>(photoChooserTask_Completed);
+
+            this.toggleButton = (ApplicationBarIconButton) this.ApplicationBar.Buttons[1];
+            this.toggleButton.IsEnabled = false;
+            this.flag = false;
         }
         /// <summary>
         /// 
@@ -55,6 +67,8 @@ namespace PhotoSharing.WindowsPhone
         {
             if (e.TaskResult == TaskResult.OK)
             {
+                this.toggleButton.IsEnabled = true;
+
                 byte[] imageBytes = new byte[e.ChosenPhoto.Length];
                 e.ChosenPhoto.Read(imageBytes, 0, imageBytes.Count());
 
@@ -74,6 +88,20 @@ namespace PhotoSharing.WindowsPhone
         void proxy_UploadCompleted(object sender, UploadCompletedEventArgs e)
         {
             MessageBox.Show("Resultado: " + e.Result);
+        }
+
+        private void ApplicationBarIconButton_Click_1(object sender, EventArgs e)
+        {
+            UploadPhotosSoapClient soapClient = new UploadPhotosSoapClient();
+            this.toggleButton.IsEnabled = false;
+            this.flag = !this.flag;
+            this.toggleButton.IconUri = this.flag ? new Uri("/Assets/AppBar/add.png", UriKind.Relative) : new Uri("/Assets/AppBar/minus.png", UriKind.Relative);            
+            soapClient.ToggleCompleted += (o, args) =>
+                {
+                    this.toggleButton.IsEnabled = true;
+                };
+
+            soapClient.ToggleAsync();
         }
     }
 }
