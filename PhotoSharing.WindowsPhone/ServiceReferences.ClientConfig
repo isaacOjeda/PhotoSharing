@@ -1,0 +1,16 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <basicHttpBinding>
+                <binding name="UploadPhotosSoap" maxBufferSize="2147483647" maxReceivedMessageSize="2147483647">
+                    <security mode="None" />
+                </binding>
+            </basicHttpBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://192.168.0.24/PhotoSharing/Webservice/UploadPhotos.asmx"
+                binding="basicHttpBinding" bindingConfiguration="UploadPhotosSoap"
+                contract="UploadService.UploadPhotosSoap" name="UploadPhotosSoap" />
+        </client>
+    </system.serviceModel>
+</configuration>

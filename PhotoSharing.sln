@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSharing.Webservice", "PhotoSharing.Webservice\PhotoSharing.Webservice.csproj", "{5659BF55-7AB1-489D-951C-B47995BE1A3E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSharing.WindowsPhone", "PhotoSharing.WindowsPhone\PhotoSharing.WindowsPhone.csproj", "{5995E49D-BC4A-414B-85F5-119F26FC44AE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5659BF55-7AB1-489D-951C-B47995BE1A3E} = {5659BF55-7AB1-489D-951C-B47995BE1A3E}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoSharing.Tests", "PhotoSharing.Tests\PhotoSharing.Tests.csproj", "{30A5F6B6-1436-4F4E-97BB-31712292B14C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{5659BF55-7AB1-489D-951C-B47995BE1A3E} = {5659BF55-7AB1-489D-951C-B47995BE1A3E}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5659BF55-7AB1-489D-951C-B47995BE1A3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5659BF55-7AB1-489D-951C-B47995BE1A3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5659BF55-7AB1-489D-951C-B47995BE1A3E}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{5659BF55-7AB1-489D-951C-B47995BE1A3E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5659BF55-7AB1-489D-951C-B47995BE1A3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5659BF55-7AB1-489D-951C-B47995BE1A3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5659BF55-7AB1-489D-951C-B47995BE1A3E}.Release|ARM.ActiveCfg = Release|Any CPU
+		{5659BF55-7AB1-489D-951C-B47995BE1A3E}.Release|x86.ActiveCfg = Release|Any CPU
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Debug|ARM.ActiveCfg = Debug|ARM
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Debug|ARM.Build.0 = Debug|ARM
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Debug|ARM.Deploy.0 = Debug|ARM
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Debug|x86.ActiveCfg = Debug|x86
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Debug|x86.Build.0 = Debug|x86
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Debug|x86.Deploy.0 = Debug|x86
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Release|ARM.ActiveCfg = Release|ARM
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Release|ARM.Build.0 = Release|ARM
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Release|ARM.Deploy.0 = Release|ARM
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Release|x86.ActiveCfg = Release|x86
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Release|x86.Build.0 = Release|x86
+		{5995E49D-BC4A-414B-85F5-119F26FC44AE}.Release|x86.Deploy.0 = Release|x86
+		{30A5F6B6-1436-4F4E-97BB-31712292B14C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A5F6B6-1436-4F4E-97BB-31712292B14C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A5F6B6-1436-4F4E-97BB-31712292B14C}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{30A5F6B6-1436-4F4E-97BB-31712292B14C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{30A5F6B6-1436-4F4E-97BB-31712292B14C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A5F6B6-1436-4F4E-97BB-31712292B14C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A5F6B6-1436-4F4E-97BB-31712292B14C}.Release|ARM.ActiveCfg = Release|Any CPU
+		{30A5F6B6-1436-4F4E-97BB-31712292B14C}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
