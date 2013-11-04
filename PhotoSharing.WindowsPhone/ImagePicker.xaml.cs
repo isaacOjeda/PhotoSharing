@@ -11,6 +11,7 @@ using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using Microsoft.Phone.Tasks;
 using PhotoSharing.WindowsPhone.UploadService;
+using System.Windows.Media;
 
 namespace PhotoSharing.WindowsPhone
 {
@@ -46,6 +47,9 @@ namespace PhotoSharing.WindowsPhone
             this.toggleButton = (ApplicationBarIconButton) this.ApplicationBar.Buttons[1];
             this.toggleButton.IsEnabled = false;
             this.flag = false;
+            this.progressBar.Background = new SolidColorBrush(Color.FromArgb(255, 255, 255, 255));
+            this.progressBar.Visibility = System.Windows.Visibility.Collapsed;
+            this.progressBar.IsIndeterminate = true;
         }
         /// <summary>
         /// 
@@ -66,9 +70,10 @@ namespace PhotoSharing.WindowsPhone
         void photoChooserTask_Completed(object sender, PhotoResult e)
         {
             if (e.TaskResult == TaskResult.OK)
-            {
+            {                
+                this.progressBar.Visibility = System.Windows.Visibility.Visible;
                 this.toggleButton.IsEnabled = true;
-
+                
                 byte[] imageBytes = new byte[e.ChosenPhoto.Length];
                 e.ChosenPhoto.Read(imageBytes, 0, imageBytes.Count());
 
@@ -87,7 +92,8 @@ namespace PhotoSharing.WindowsPhone
 
         void proxy_UploadCompleted(object sender, UploadCompletedEventArgs e)
         {
-            MessageBox.Show("Resultado: " + e.Result);
+            // ok            
+            this.progressBar.Visibility = System.Windows.Visibility.Collapsed;
         }
 
         private void ApplicationBarIconButton_Click_1(object sender, EventArgs e)

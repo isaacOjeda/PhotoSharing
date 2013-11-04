@@ -25,10 +25,12 @@
         <StackPanel Grid.Row="0" Margin="12,17,0,28">
             <TextBlock Text="Photo Sharing" Style="{StaticResource PhoneTextNormalStyle}"/>
             <TextBlock Text="Real time Share" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <ProgressBar x:Name="progressBar"/>
         </StackPanel>
 
         <!--ContentPanel. Colocar aquí el contenido adicional-->
         <Grid x:Name="ContentPanel" Grid.Row="1">
+            
             <Image x:Name="selectedImage"/>
         </Grid>
     </Grid>

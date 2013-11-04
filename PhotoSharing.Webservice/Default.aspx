@@ -18,10 +18,17 @@
 
             photoHub.client.onImageUploaded = function (url) {
                 $qrCode = $("#qrCode");
-                $qrCode.slideUp("fast")
-                    .html("<img src='" + url + "' />")
-                    .delay("1000")
-                    .slideDown("fast");
+                //$qrCode.slideUp("fast", function () {
+                //    $qrCode.html("<img src='" + url + "' />")
+                //                        .delay("1000")
+                //                        .slideDown("fast");
+                //});
+                $qrCode.animate({ 'left': '-2000' }, 1000, function () {
+                    $qrCode.html("<img src='" + url + "' />")
+                        .delay("1000")
+                        .css("left", "4000px")
+                        .animate({ 'left': '0' }, 1000);
+                });
             }
 
             photoHub.client.toggleImage = function () {
@@ -55,10 +62,12 @@
             width:50%;
             margin:0 auto;
             text-align:center;
+            position:relative;
         }
         section
         {
             margin-top:50px;
+            overflow:hidden;
         }
     </style>
 </head>
