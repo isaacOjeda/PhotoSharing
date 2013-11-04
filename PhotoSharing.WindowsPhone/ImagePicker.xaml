@@ -29,8 +29,7 @@
         </StackPanel>
 
         <!--ContentPanel. Colocar aquí el contenido adicional-->
-        <Grid x:Name="ContentPanel" Grid.Row="1">
-            
+        <Grid x:Name="ContentPanel" Grid.Row="1">            
             <Image x:Name="selectedImage"/>
         </Grid>
     </Grid>
